@@ -2,121 +2,211 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scroll UI Demo</title>
+
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        @font-face {
-            font-family: "Helvetica Bold";
-            src: url("fonts/Helvetica-Bold.ttf");
-        }
-
-        body {
-            color: whitesmoke;
-            font-family: "Helvetica Bold";
-            margin: 0;
-            overflow-y: hidden;
-            animation: both;
-            animation-duration: 500ms;
-            user-select: none;
-        }
-
-        h1 {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        h2 {
-            margin: 0px;
-            padding: 0px;
-        }
-
-        #myVideo {
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-        }
-
-        .icon {
-            width: 48px;
-            height: 48px;
-        }
-
-        .acrylic {
-            background: rgba(0, 0, 0, 0.5);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            width: 32px;
-            height: 32px;
-        }
-
-        .window {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: left;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            flex-shrink: 0;
-            /* Prevent shrinking */
-        }
-
-        .drag {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: left;
-            height: 100%;
-            width: 16px;
-            background: rgba(0, 0, 0, 0.5);
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            flex-shrink: 0;
-            /* Prevent shrinking */
-        }
-
-        .button {
-            padding: 12px;
-        }
-
-        .button:hover {
-            background-color: rgba(0, 157, 255, 0.5);
-        }
-
-        .button:active {
-            background-color: rgb(0, 157, 255);
-        }
-
-        .window img {
-            height: 100%;
-            width: auto;
-            /* Maintain aspect ratio, allow horizontal overflow */
-        }
-
         .maximized {
             width: 100vw;
-        }
-
-        .tinyicon {
-            width: 16px;
-            padding: 4px;
         }
     </style>
 </head>
 
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="images/wallpaper.mp4" type="video/mp4">
+    </video>
+
+    <div style="display: flex; flex-direction: column; width: 100%; height: 100%; margin: 0;">
+        <div id="scrollWindowHolder" style="width: 100%; flex: 1; display: flex; overflow-x: auto;">
+            <div id="scrollWindow" style="display: flex;">
+
+                <section id="comp-start">
+                    <div id="start" class="window" style="width: 320px">
+                        <div>
+                            <div style="display: flex;" class="button">
+                                <img src="images/icon/cinemint.jpg" style="width: 32px; height: 32px;">
+                                <h1 style="padding-left: 6px">Ethan Hill</h1>
+                            </div>
+                            <hr>
+                        </div>
+    
+                        <div style="flex: 1; overflow-y: auto;">
+                            <div class="button">Audacity</div>
+                            <div class="button">Disk Genius</div>
+                            <div class="button">DOSBox</div>
+                            <div class="button">DVD Styler</div>
+                            <div class="button">Inkscape</div>
+                            <div class="button">Krita</div>
+                            <div class="button">Gimp</div>
+                            <div class="button">Moho</div>
+                            <div class="button">MuseScore Studio 4</div>
+                            <div class="button">MySQL Workbench</div>
+                            <div class="button">OBS StudioOpenMPT</div>
+                            <div class="button">Oracle VM VirtualBox</div>
+                            <div class="button">Shotcut</div>
+                            <div class="button">Steam</div>
+                            <div class="button">Studio One 5</div>
+                            <div class="button">Tiled</div>
+                            <div class="button">Unity Hub</div>
+                            <div class="button">Visual Studio 2019</div>
+                            <div class="button">Visual Studio Code</div>
+                            <div class="button">VLC Player</div>
+                            <div class="button">WinSCP</div>
+                            <div class="button">Word 2016</div>
+                        </div>
+    
+    
+                        <div>
+                            <hr>
+                            <div style="display: flex;">
+                                <img class="button" src="images/icon/firefox.png" style="width: 32px; height: 32px;">
+                                <img class="button" src="images/icon/vscode.svg" style="width: 32px; height: 32px;">
+                            </div>
+                            <input style="width: 100%; padding: 12px;" type="text" placeholder="Search"></input>
+                        </div>
+    
+    
+                    </div>
+                    <div id="drag" class="drag">
+                        <div style="flex: 1;"> </div>
+                        <div>
+                            <center>
+                                <img src="images/drag.png">
+                            </center>
+                        </div>
+                        <div style="flex: 1;"> </div>
+                    </div>
+                </section>
+    
+                <section id="comp-quicksettings">
+    
+                    <div id="quicksettings" class="window" style="width: 320px">
+                        <center>
+                            No new notifications.
+                        </center>
+                        <div style="flex: 1;">
+                        </div>
+                    </div>
+                    <div id="drag4" class="drag">
+                        <div style="flex: 1;"> </div>
+                        <div>
+                            <center>
+                                <img src="images/drag.png">
+                            </center>
+                        </div>
+                        <div style="flex: 1;"> </div>
+                    </div>
+                </section>
+    
+                <section id="comp-notepad">
+    
+                    <div id="notepad" class="window" style="width: 320px">
+                        <div style="display: flex; flex-direction: column; height: 100%;">
+                            <div style="display: flex;">
+                                <div class="button">File</div>
+                                <div class="button">Edit</div>
+                                <div class="button">View</div>
+                                <div style="flex: 1;"></div>
+                                <div class="button" onclick="maximize('notepad')"><img src="images/btn-grow.png"></div>
+                                <div class="button btn-exit"><img src="images/btn-exit.png"></div>
+                            </div>
+                            <textarea style="flex: 1; width: 100%"></textarea>
+                            <div style="display: flex;">
+                                <div>Ln 1, Col 1</div>
+                                <div style="flex: 1;"></div>
+                                <div>UTF-8</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="drag2" class="drag">
+                        <div style="flex: 1;"> </div>
+                        <div>
+                            <center>
+                                <img src="images/drag.png">
+                            </center>
+                        </div>
+                        <div style="flex: 1;"> </div>
+                    </div>
+                </section>
+    
+    
+    
+            </div>
+    
+            <div id="end-padding" style="min-width: 100%">
+            </div>
+        </div>
+
+        <div class="acrylic shadow" id="iconContainer" style="display: flex;">
+            <div data-section="start" class="icon button" draggable="true">
+                <img onclick="scrollToWindow('start')" style="width: 48px;" src="images/icon/windows.png">
+            </div>
+            <div data-section="quicksettings" onclick="scrollToWindow('quicksettings')" class="icon button"
+                draggable="true" style="display: flex; flex-direction: column;">
+                <center>5:03</center>
+                <div style="flex: 1;"></div>
+                <center>
+                    <div style="display: flex; flex-wrap: wrap;">
+                        <img class="tinyicon" src="images/icon/wifi.webp">
+                        <img class="tinyicon" src="images/icon/full-battery-32.png">
+                    </div>
+                </center>
+            </div>
+            <div data-section="notepad" class="icon button" draggable="true">
+                <img onclick="scrollToWindow('notepad')" style="width: 48px;" src="images/icon/notepad.png">
+            </div>
+        </div>
+    </div>
+</body>
+
 <script>
+    class DragResizer {
+        constructor(dragElementId, targetElementId, minWidth = 320) {
+            this.dragElement = document.getElementById(dragElementId);
+            this.targetElement = document.getElementById(targetElementId);
+            this.isDragging = false;
+            this.initialMouseX = 0;
+            this.initialTargetWidth = 0;
+            this.minWidth = minWidth;
+
+            this.initEvents();
+        }
+
+        initEvents() {
+            this.dragElement.addEventListener('mousedown', this.startDragging.bind(this));
+            document.addEventListener('mouseup', this.stopDragging.bind(this));
+            document.addEventListener('mousemove', this.handleDrag.bind(this));
+        }
+
+        startDragging(event) {
+            this.isDragging = true;
+            this.initialMouseX = event.clientX;
+            this.initialTargetWidth = this.targetElement.offsetWidth;
+        }
+
+        stopDragging() {
+            this.isDragging = false;
+        }
+
+        handleDrag(event) {
+            if (this.isDragging) {
+                let deltaX = event.clientX - this.initialMouseX;
+                let newWidth = this.initialTargetWidth + deltaX;
+                newWidth = Math.max(newWidth, this.minWidth);
+                this.targetElement.style.width = newWidth + 'px';
+            }
+        }
+    }
+
     var mouseXPos = 0;
+    //
 
     function scrollToWindow(win) {
         let elem = document.getElementById(win);
         let x = elem.offsetLeft;
-        document.getElementById('scrollWindow').scrollLeft = x;
+        document.getElementById('scrollWindowHolder').scrollLeft = x;
     }
 
     function maximize(win) {
@@ -129,200 +219,74 @@
             scrollToWindow(win);
         }
     }
-</script>
 
-<body>
-    <video autoplay muted loop id="myVideo">
-        <source src="images/wallpaper.mp4" type="video/mp4">
-    </video>
+    window.onload = function () {
+        // Create new DragResizer instances for different elements
+        new DragResizer('drag', 'start');
+        new DragResizer('drag2', 'notepad');
+        new DragResizer('drag4', 'quicksettings');
+    };
 
-    <div style="display: flex; flex-direction: column; width: 100%; height: 100%; margin: 0;">
-        <div id="scrollWindow" style="flex: 1; overflow-x: auto; display: flex;">
-            <div id="start" class="window" style="width: 480px">
-                <div>
-                    <div style="display: flex;" class="button">
-                        <img src="images/icon/cinemint.jpg" style="width: 32px; height: 32px;">
-                        <h2 style="padding-left: 6px">Ethan Hill</h2>
-                    </div>
-                    <hr>
-                </div>
+    // - REARRANGE
 
-                <div style="flex: 1; overflow-y: auto;">
-                    <div class="button">Audacity</div>
-                    <div class="button">Disk Genius</div>
-                    <div class="button">DOSBox</div>
-                    <div class="button">DVD Styler</div>
-                    <div class="button">Inkscape</div>
-                    <div class="button">Krita</div>
-                    <div class="button">Gimp</div>
-                    <div class="button">Moho</div>
-                    <div class="button">MuseScore Studio 4</div>
-                    <div class="button">MySQL Workbench</div>
-                    <div class="button">OBS StudioOpenMPT</div>
-                    <div class="button">Oracle VM VirtualBox</div>
-                    <div class="button">Shotcut</div>
-                    <div class="button">Steam</div>
-                    <div class="button">Studio One 5</div>
-                    <div class="button">Tiled</div>
-                    <div class="button">Unity Hub</div>
-                    <div class="button">Visual Studio 2019</div>
-                    <div class="button">Visual Studio Code</div>
-                    <div class="button">VLC Player</div>
-                    <div class="button">WinSCP</div>
-                    <div class="button">Word 2016</div>
-                </div>
+    function rearrangeSections() {
+        const icons = [...iconContainer.querySelectorAll('.icon')];
+        const scrollWindow = document.getElementById('scrollWindow');
 
-
-                <div>
-                    <hr>
-                    <div style="display: flex;" >
-                        <img class="button" src="images/icon/firefox.png" style="width: 32px; height: 32px;">
-                        <img class="button" src="images/icon/vscode.svg" style="width: 32px; height: 32px;">
-                    </div>
-                    <input style="width: 100%; padding: 12px;" type="text" placeholder="Search"></input>
-                </div>
-
-
-            </div>
-            <div id="drag" class="drag">
-                <div style="flex: 1;"> </div>
-                <div>
-                    <center>
-                        <img src="images/drag.png">
-                    </center>
-                </div>
-                <div style="flex: 1;"> </div>
-            </div>
-            <div id="notepad" class="window">
-                <div style="display: flex; flex-direction: column; height: 100%;">
-                    <div style="display: flex;">
-                        <div class="button">File</div>
-                        <div class="button">Edit</div>
-                        <div class="button">View</div>
-                        <div style="flex: 1;"></div>
-                        <div class="button" onclick="maximize('notepad')">Grow</div>
-                        <div class="button">Close</div>
-                    </div>
-                    <textarea style="flex: 1; width: 100%"></textarea>
-                    <div style="display: flex;">
-                        <div>Ln 1, Col 1</div>
-                        <div style="flex: 1;"></div>
-                        <div>UTF-8</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="acrylic shadow" style="display: flex;">
-            <div class="icon button">
-                <img onclick="scrollToWindow('start')" style="width: 48px;" src="images/icon/windows.png">
-            </div>
-            <div class="icon button">
-                <img onclick="scrollToWindow('notepad')" style="width: 48px;" src="images/icon/notepad.png">
-            </div>
-            <div style="flex: 1;">
-
-            </div>
-            <div class="icon button" style="display: flex; flex-direction: column;">
-                <div style="flex: 1;">
-
-                </div>
-
-                <center>
-                    <img src="images/icon/ma17-Notifications.png" width="32px;">
-                </center>
-
-                <div style="flex: 1;">
-
-                </div>
-            </div>
-            <div class="icon button" style="display: flex; flex-direction: column;">
-                <center>
-                    5:03
-                </center>
-                <div style="flex: 1;">
-
-                </div>
-                <center>
-                    <div style="display: flex; flex-wrap: wrap;">
-                        <img class="tinyicon" src="images/icon/wifi.webp">
-                        <img class="tinyicon" src="images/icon/full-battery-32.png">
-                    </div>
-                </center>
-            </div>
-        </div>
-    </div>
-</body>
-
-<script>
-
-    let dragElement = document.getElementById('drag');
-    let startElement = document.getElementById('start');
-    let scrollWindow = document.getElementById('scrollWindow');
-
-    let isDragging = false;
-    let initialMouseX = 0;
-    let initialStartWidth = 0;
-
-    dragElement.addEventListener('mousedown', (event) => {
-        isDragging = true;
-        initialMouseX = event.clientX;
-        initialStartWidth = startElement.offsetWidth;
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
-
-    document.addEventListener('mousemove', (event) => {
-        if (isDragging) {
-            let deltaX = event.clientX - initialMouseX;
-            let newWidth = initialStartWidth + deltaX;
-            newWidth = Math.max(newWidth, 320);
-            startElement.style.width = newWidth + 'px';
-        }
-    });
-
-    //
-
-    class Draggable {
-        constructor(element) {
-            this.element = element;
-            this.isDragging = false;
-            this.initialMouseX = 0;
-            this.initialWidth = 0;
-
-            this.element.addEventListener('mousedown', this.onMouseDown.bind(this));
-        }
-
-        onMouseDown(event) {
-            this.isDragging = true;
-            this.initialMouseX = event.clientX;
-            this.initialWidth = this.element.offsetWidth;
-            document.addEventListener('mousemove', this.onMouseMove);
-            document.addEventListener('mouseup', this.onMouseUp);
-        }
-
-        onMouseMove(event) {
-            if (this.isDragging) {
-                let deltaX = event.clientX - this.initialMouseX;
-                let newWidth = this.initialWidth + deltaX;
-                newWidth = Math.max(newWidth, 320);
-                this.element.style.width = newWidth + 'px';
+        icons.forEach(icon => {
+            const sectionId = icon.dataset.section;
+            const section = document.getElementById('comp-' + sectionId);
+            if (section && scrollWindow.contains(section)) {
+                scrollWindow.appendChild(section);
             }
-        }
-
-        onMouseUp() {
-            this.isDragging = false;
-            document.removeEventListener('mousemove', this.onMouseMove);
-            document.removeEventListener('mouseup', this.onMouseUp);
-        }
+        });
     }
 
-    const draggableElements = document.querySelectorAll('.draggable');
+    // - ICON CONTAINER
 
-    draggableElements.forEach(element => {
-    new Draggable(element);
+    const iconContainer = document.getElementById('iconContainer');
+    let draggedElement = null;
+
+    iconContainer.addEventListener('dragstart', function (e) {
+        // Ensure we only drag the .icon div, not the image or nested elements
+        if (e.target.classList.contains('icon')) {
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+
+            // To prevent the ghost icon from appearing, we can set the drag image to null
+            e.dataTransfer.setDragImage(new Image(), 0, 0);
+        }
     });
+
+    iconContainer.addEventListener('dragend', function (e) {
+        e.target.classList.remove('dragging');
+        rearrangeSections();
+        draggedElement = null;
+    });
+
+    iconContainer.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        const afterElement = getDragAfterElement(iconContainer, e.clientX);
+        if (afterElement == null) {
+            iconContainer.appendChild(draggedElement);
+        } else {
+            iconContainer.insertBefore(draggedElement, afterElement);
+        }
+    });
+
+    function getDragAfterElement(container, x) {
+        const draggableElements = [...container.querySelectorAll('.icon:not(.dragging)')];
+
+        return draggableElements.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = x - box.left - box.width / 2;
+            if (offset < 0 && offset > closest.offset) {
+                return { offset: offset, element: child };
+            } else {
+                return closest;
+            }
+        }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
 </script>
 
 </html>

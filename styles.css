@@ -1,0 +1,154 @@
+@font-face {
+    font-family: "Helvetica Bold";
+    src: url("fonts/Helvetica-Bold.ttf");
+}
+
+body {
+    color: whitesmoke;
+    font-family: "Helvetica Bold";
+    margin: 0;
+    overflow-y: hidden;
+    animation: both;
+    animation-duration: 500ms;
+    user-select: none;
+}
+
+h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+h2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+section {
+    display: flex;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+
+.icon {
+    width: 48px;
+    height: 48px;
+    cursor: move;
+}
+
+.icon.dragging {
+    opacity: 0.5;
+}
+
+.acrylic {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
+.window {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.drag {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    height: 100%;
+    width: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.drag:hover {
+    background-color: rgba(0, 157, 255, 0.5);
+}
+
+.drag:active {
+    background-color: rgb(0, 157, 255);
+}
+
+.button {
+    padding: 12px;
+}
+
+.button:hover {
+    background-color: rgba(0, 157, 255, 0.5);
+}
+
+.button:active {
+    background-color: rgb(0, 157, 255);
+}
+
+.btn-exit:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.btn-exit:active {
+    background-color: rgb(255, 0, 0);
+}
+
+.window img {
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+    user-select: none;
+
+    /* Maintain aspect ratio, allow horizontal overflow */
+}
+
+.maximized {
+    width: 100vw !important;
+}
+
+.tinyicon {
+    width: 16px;
+    padding: 4px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 157, 255);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 157, 255, 0.5);
+}
