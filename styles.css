@@ -70,6 +70,28 @@ section {
     /* Prevent shrinking */
 }
 
+.scroll-window {
+    overflow-x: auto;
+}
+
+.hide-on-wide {
+
+}
+
+@media (max-width: 640px) {
+    .window {
+        width: 100vw !important;
+    }
+    
+    .scroll-window {
+        overflow-x: hidden;
+    }
+
+    .hide-on-wide {
+        display: none;
+    }
+}
+
 .drag {
     display: flex;
     flex-direction: column;
